@@ -1,0 +1,19 @@
+{
+  "name": "ghdependabotalertspoc",
+  "version": "0.1.0",
+  "description": "A POC to fetch dependabot alerts via github actions + node script and log it to a slack webhook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seppo007/GHDependabotAlertsPOC.git"
+  },
+  "author": "Sebastian Schalow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Seppo007/GHDependabotAlertsPOC/issues"
+  },
+  "homepage": "https://github.com/Seppo007/GHDependabotAlertsPOC#readme"
+}
