@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Seppo007/GHDependabotAlertsPOC#readme",
   "devDependencies": {
-	  "isomorphic-fetch": "2.0.0"
+	  "prop-types": "15.5.7"
   }
 }
