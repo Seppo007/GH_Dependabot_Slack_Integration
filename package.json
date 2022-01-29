@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Seppo007/GHDependabotAlertsPOC/issues"
   },
-  "homepage": "https://github.com/Seppo007/GHDependabotAlertsPOC#readme"
+  "homepage": "https://github.com/Seppo007/GHDependabotAlertsPOC#readme",
+  "devDependencies": {
+	  "isomorphic-fetch": "2.0.0"
+  }
 }
