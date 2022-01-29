@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Seppo007/GHDependabotAlertsPOC#readme",
   "devDependencies": {
-	  "prop-types": "15.5.7"
+	  "pac-resolver": "4.1.0"
   }
 }
