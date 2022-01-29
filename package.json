@@ -2,8 +2,9 @@
   "name": "ghdependabotalertspoc",
   "version": "0.1.0",
   "description": "A POC to fetch dependabot alerts via github actions + node script and log it to a slack webhook",
-  "main": "index.js",
+  "main": "checkVulnerabilities.js",
   "scripts": {
+	"start": "node checkVulnerabilities.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/Seppo007/GHDependabotAlertsPOC#readme",
   "devDependencies": {
-	  "pac-resolver": "4.1.0"
+	  "pac-resolver": "4.1.0",
+	  "graphql-request": "^4.0.0"
   }
 }
