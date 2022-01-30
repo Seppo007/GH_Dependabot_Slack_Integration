@@ -10,9 +10,7 @@ jobs:
   slack_reporter:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repo
         uses: actions/checkout@v2
       
@@ -23,7 +21,5 @@ jobs:
 
       - name: Report vulnerabilities to slack
         run: |
-          node -v
           npm ci
-          ls -l node_modules/
-          node checkVulnerabilities.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{github.token}} ${{secrets.SLACK_WEBHOOK}}
+          node checkVulnerabilities.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{secrets.GITHUB_DEPENDABOT_PAT}} ${{secrets.SLACK_WEBHOOK}}
