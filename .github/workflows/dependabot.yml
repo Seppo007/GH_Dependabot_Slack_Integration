@@ -25,4 +25,6 @@ jobs:
         run: env
 
       - name: Report vulnerabilities to slack
-        run: node checkVulnerabilities.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{github.token}} ${{secrets.SLACK_WEBHOOK}}
+        run: |
+          npm install
+          node checkVulnerabilities.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{github.token}} ${{secrets.SLACK_WEBHOOK}}
