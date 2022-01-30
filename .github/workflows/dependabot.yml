@@ -19,15 +19,11 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
-
-      - name: Show env and root
-        run: | 
-          env
+          node-version: '16'
 
       - name: Report vulnerabilities to slack
         run: |
           node -v
-          npm install
+          npm ci
           ls -l node_modules/
           node checkVulnerabilities.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{github.token}} ${{secrets.SLACK_WEBHOOK}}
