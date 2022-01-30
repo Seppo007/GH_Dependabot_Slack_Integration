@@ -24,6 +24,6 @@ jobs:
       - name: Report vulnerabilities to slack
         run: |
           npm ci
-          echo "owner:  ${{github.repository_owner}}  repo: ${{github.event.repository.name}}  PAT:  ${{secrets.GH_DEPENDABOT_PAT}}  slack:  ${{secrets.SLACK_WEBHOOK}}"
+          echo "owner:  ${{github.repository_owner}}  repo: ${{github.event.repository.name}}"
           node reportVulsToSlack.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{secrets.GH_DEPENDABOT_PAT}} ${{secrets.SLACK_WEBHOOK}}
           echo $?
