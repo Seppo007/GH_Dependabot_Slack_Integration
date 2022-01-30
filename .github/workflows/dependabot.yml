@@ -24,4 +24,5 @@ jobs:
       - name: Report vulnerabilities to slack
         run: |
           npm ci
-          exit $(node checkVulnerabilities.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{secrets.GH_DEPENDABOT_PAT}} ${{secrets.SLACK_WEBHOOK}})
+          node checkVulnerabilities.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{secrets.GH_DEPENDABOT_PAT}} ${{secrets.SLACK_WEBHOOK}}
+          echo $?
