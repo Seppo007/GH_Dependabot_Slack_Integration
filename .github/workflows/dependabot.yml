@@ -26,4 +26,3 @@ jobs:
           npm ci
           echo "owner:  ${{github.repository_owner}}  repo: ${{github.event.repository.name}}"
           node reportVulsToSlack.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{secrets.GH_DEPENDABOT_PAT}} ${{secrets.SLACK_WEBHOOK}}
-          echo $?
