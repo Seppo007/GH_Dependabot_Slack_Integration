@@ -1,10 +1,7 @@
-const graphql = require('graphql-request');
 const https = require('https');
+const graphql = require('graphql-request');
 
-fetchVulnerabilities = async () => {
-    var owner = process.env.github_owner;
-    var repo = process.env.github_repo;
-    var githubAccessToken = process.env.github_vul_pat;
+vulnerabilityReportFor = async (owner, repo, githubAccessToken) => {
     var endpoint = "https://api.github.com/graphql";
 
     const graphQLClient = new graphql.GraphQLClient(endpoint, {
@@ -33,7 +30,7 @@ fetchVulnerabilities = async () => {
         }
     }`;
 
-    return createVulnerabilityLogEntries(await graphQLClient.request(query));
+    return sortedVulnerabiliyEntriesFrom(await graphQLClient.request(query));
 }
 
 const severityRanking = {
@@ -54,7 +51,7 @@ const sortBySeverity = (vulnerabilities) => vulnerabilities.sort(
     (entryA, entryB) => severityRanking[entryB.severity] - severityRanking[entryA.severity]
 );
 
-const createVulnerabilityLogEntries = (response) => {
+const sortedVulnerabiliyEntriesFrom = (response) => {
     const responseEntries = response.repository.vulnerabilityAlerts.nodes;
     const vulnerabilities = responseEntries.map(entry => (
         {
@@ -68,8 +65,7 @@ const createVulnerabilityLogEntries = (response) => {
     return sortBySeverity(vulnerabilities);
 }
 
-const sendSlackMessage = (messageBody) => {
-    var slackWebhookEndpoint = process.env.slackEndpoint;
+const sendSlackMessage = (slackWebhookEndpoint, messageBody) => {
 
     const slackAttachments = messageBody.map((vulnerability) => {
         return {
@@ -122,8 +118,13 @@ const sendSlackMessage = (messageBody) => {
     });
 }
 
-fetchVulnerabilities()
+var owner = process.argv[2];
+var repo = process.argv[3];
+var githubAccessToken = process.argv[4];
+var slackWebhookEndpoint = process.argv[5];
+
+vulnerabilityReportFor(owner, repo, githubAccessToken)
     .then((vulnerabilites) =>
-        sendSlackMessage(vulnerabilites)
+        sendSlackMessage(slackWebhookEndpoint, vulnerabilites)
             .then(() => console.log('succesfully send slack notification'), (e) => console.log('could not send slack message because of:', e)),
         (e) => console.log("could not fetch vulnerabilities because of:", e));
