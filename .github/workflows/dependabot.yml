@@ -22,4 +22,4 @@ jobs:
       - name: Report vulnerabilities to slack
         run: |
           npm ci
-          node checkVulnerabilities.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{secrets.GITHUB_DEPENDABOT_PAT}} ${{secrets.SLACK_WEBHOOK}}
+          node checkVulnerabilities.js ${{github.repository_owner}} ${{github.event.repository.name}} ${{secrets.GH_DEPENDABOT_PAT}} ${{secrets.SLACK_WEBHOOK}}
