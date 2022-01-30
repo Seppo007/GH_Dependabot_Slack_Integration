@@ -1,10 +1,10 @@
 const https = require('https');
 const graphql = require('graphql-request');
 
-var owner = process.argv[2];
-var repo = process.argv[3];
-var githubAccessToken = process.argv[4];
-var slackWebhookEndpoint = process.argv[5];
+const owner = process.argv[2];
+const repo = process.argv[3];
+const githubAccessToken = process.argv[4];
+const slackWebhookEndpoint = process.argv[5];
 
 const severityRanking = {
     LOW: 0,
@@ -39,7 +39,7 @@ const sortedVulnerabiliyEntriesFrom = (graphqlResponse) => {
 }
 
 vulnerabilityReportFor = async (owner, repo, githubAccessToken) => {
-    var endpoint = "https://api.github.com/graphql";
+    const endpoint = "https://api.github.com/graphql";
 
     const graphQLClient = new graphql.GraphQLClient(endpoint, {
         headers: { authorization: "bearer " + githubAccessToken, }
@@ -88,7 +88,7 @@ const sendSlackMessage = (slackWebhookEndpoint, vulnerabilites) => {
 
     const slackNotification = {
         'username': 'Dependabot Vulnerability Reporter',
-        'text': 'Found the following vulnerabilities in ' + process.env.github_repo + ':',
+        'text': 'Found the following vulnerabilities in ' + repo + ':',
         'icon_emoji': ':male-detective:',
         'attachments': slackAttachments,
     };
