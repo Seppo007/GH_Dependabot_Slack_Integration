@@ -19,10 +19,12 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v1
         with:
-          node-version: '14'
+          node-version: '12'
 
-      - name: Show env
-        run: env
+      - name: Show env and root
+        run: | 
+          env
+          ls -l
 
       - name: Report vulnerabilities to slack
         run: |
