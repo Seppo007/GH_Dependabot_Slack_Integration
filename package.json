@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/Seppo007/GHDependabotAlertsPOC#readme",
   "devDependencies": {
-	  "pac-resolver": "4.1.0",
-	  "graphql-request": "^4.0.0"
+	  "graphql-request": "^5.0.0"
   }
 }
