@@ -1,6 +1,6 @@
 # GitHub Dependabot Slack Integration javascript runner
 
-Fetch dependabot alerts via github actions + node script and log it to a slack webhook
+Fetch dependabot alerts via node script and log it to a slack webhook
 
 ## How to use
 Inkove the ```reportVulsToSlack``` script via node:
