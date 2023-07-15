@@ -1,4 +1,4 @@
-# GitHub Actions Dependabot Alert POC
+# GitHub Dependabot Slack Integration javascript runner
 
 Fetch dependabot alerts via github actions + node script and log it to a slack webhook
 
